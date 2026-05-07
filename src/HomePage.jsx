@@ -6,21 +6,30 @@ export default function HomePage(){
     
     const loadData = async () => {
         const response = await fetch(
-            `https://api.coingecko.com/api/v3/global?x_cg_demo_api_key=${API_KEY}`);
+            `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=20&page=1&x_cg_demo_api_key=${API_KEY}`);
         return await response.json();
     }
-
+    
     useEffect(() => {
         loadData().then(setCoindata);
     }, []);
-
-
     
-
+    if (coindata.length === 0) return <p>Cargando...</p>
+    
     return (
-        <main>
-            {JSON.stringify(coindata)}
-        </main>
+         <div>
+            <header>
+              <h1>Coins Dashboard</h1>
+            </header>
+            <section>
+              <h2>Top Coins</h2>
+              <div>
+                {coindata.map(coin => (
+                    <p key={coin.id}> {coin.name} - {coin.current_price}</p>
+                ))}
+              </div>
+            </section>
+        </div>
         
     )
 }
