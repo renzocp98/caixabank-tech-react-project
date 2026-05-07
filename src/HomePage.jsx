@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import Card from './components/Card';
 
 export default function HomePage(){
     const [coindata, setCoindata] = useState([]);
@@ -22,17 +23,16 @@ export default function HomePage(){
               <h1>Coins Dashboard</h1>
             </header>
             <section>
-              <h2>Top Coins</h2>
-              <div>
+            <h2>Top Coins</h2>
                 <ol className="list-decimal pl-10">
-                    {coindata.map(coin => ( 
-                    <li key={coin.id}> 
-                    {coin.name} - {coin.current_price}
-                    </li>
-                ))}
+                    {coindata.map((coin) =>{
+
+                        return <li key={coin.id}><Card  coin={coin}/></li>
+                    })}
                 </ol>
-              </div>
+            
             </section>
+            
         </div>
         
     )
