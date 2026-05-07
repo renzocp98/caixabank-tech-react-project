@@ -24,9 +24,13 @@ export default function HomePage(){
             <section>
               <h2>Top Coins</h2>
               <div>
-                {coindata.map(coin => (
-                    <p key={coin.id}> {coin.name} - {coin.current_price}</p>
+                <ol className="list-decimal pl-10">
+                    {coindata.map(coin => ( 
+                    <li key={coin.id}> 
+                    {coin.name} - {coin.current_price}
+                    </li>
                 ))}
+                </ol>
               </div>
             </section>
         </div>
