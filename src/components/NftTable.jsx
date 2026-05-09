@@ -16,9 +16,9 @@ export default function NftTable({nftdata}){
             <TableCaption>A list of NFTs</TableCaption>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[100px]">Name</TableHead>
-                <TableHead>Symbol</TableHead>
-                <TableHead>Platform name</TableHead>
+                <TableHead className="text-gray-300">Name</TableHead>
+                <TableHead className="text-gray-300">Symbol</TableHead>
+                <TableHead className="text-gray-300">Platform name</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>

@@ -31,7 +31,7 @@ export default function HomePage(){
     return (
          <>
             <header >
-              <h1 className="text-center p-6" >Coins Dashboard</h1>
+              <h1 className="text-center p-6" >Coins  and NFTs Dashboard</h1>
             </header>
             <section className="pl-10 flex justify-center gap-50 px-10 py-6">
                     <CoinTable coindata={coindata} className="p-5"/>

@@ -14,12 +14,12 @@ export default function CoinTable({coindata}){
       <>
         <Table>
             <TableCaption>A list of Coins</TableCaption>
-            <TableHeader>
+            <TableHeader >
               <TableRow>
-                <TableHead className="w-[100px]">Name</TableHead>
-                <TableHead>Symbol</TableHead>
-                <TableHead>Icon</TableHead>
-                <TableHead>Current Price</TableHead>
+                <TableHead className="text-gray-300">Name</TableHead>
+                <TableHead className="text-gray-300">Symbol</TableHead>
+                <TableHead className="text-gray-300">Icon</TableHead>
+                <TableHead className="text-gray-300">Current Price</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>

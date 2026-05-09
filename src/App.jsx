@@ -6,7 +6,7 @@ import CoinTable from './components/CoinTable.jsx'
 function App() {
 
   return (
-    <main>
+    <main className="bg-gray-950 text-white min-h-screen">
       <HomePage/>
     </main>
   )
