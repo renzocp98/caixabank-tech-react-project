@@ -20,29 +20,21 @@ export default function CoinTable({coindata}){
                 <TableHead>Symbol</TableHead>
                 <TableHead>Icon</TableHead>
                 <TableHead>Current Price</TableHead>
-                <TableHead>Market Cap</TableHead>
-                <TableHead>High 24h</TableHead>
-                <TableHead>Low 24h</TableHead>
-                <TableHead>Last Update</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
               
                 {coindata.map((coin) => (
-                <>
-                <TableRow>
+                
+                <TableRow key={coin.id} className="h-12">
                   <TableCell>{coin.name}</TableCell>
                   <TableCell>{coin.symbol}</TableCell>
                   <TableCell>
-                    <img src="{coin.image}"></img>
+                    <img src={coin.image} className="w-6 h-6"></img>
                     </TableCell>
                   <TableCell>{coin.current_price}</TableCell>
-                  <TableCell>{coin.market_cap}</TableCell>
-                  <TableCell>{coin.high_24h}</TableCell>
-                  <TableCell>{coin.low_24h}</TableCell>
-                  <TableCell>{coin.last_updated}</TableCell>
                 </TableRow>
-                </>                
+                                
                 ))}                
             </TableBody>
         </Table>
