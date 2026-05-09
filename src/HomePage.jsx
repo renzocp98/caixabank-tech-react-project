@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Card from './components/Card';
+import CoinTable from '#components/CoinTable.jsx';
 
 export default function HomePage(){
     const [coindata, setCoindata] = useState([]);
@@ -18,22 +19,17 @@ export default function HomePage(){
     if (coindata.length === 0) return <p>Cargando...</p>
     
     return (
-         <div>
+         <>
             <header>
-              <h1>Coins Dashboard</h1>
+              <h1 className="p-10">Coins Dashboard</h1>
             </header>
             <section>
-            <h2>Top Coins</h2>
                 <ol className="list-decimal pl-10">
-                    {coindata.map((coin) =>{
-
-                        return <li key={coin.id}><Card  coin={coin}/></li>
-                    })}
+                    <CoinTable coindata={coindata}/>
                 </ol>
-            
             </section>
             
-        </div>
+        </>
         
     )
 }
