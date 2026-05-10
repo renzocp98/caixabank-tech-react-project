@@ -1,26 +1,29 @@
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import CoinTable from '#components/CoinTable.jsx';
 import NftTable from '#components/NftTable.jsx';
+import { AppContext } from '#main.jsx';
 
 export default function HomePage(){
     const [coindata, setCoindata] = useState([]);
     const [nftdata, setNftdata ] = useState([]);
 
-    const API_KEY = import.meta.env.VITE_COINGECKO_API_KEY;
+    const { apiKey, rootURL } = useContext(AppContext);
+
+    /*const API_KEY = import.meta.env.VITE_COINGECKO_API_KEY;*/
     
-    const loadCOinData = async () => {
+    const loadCoinData = async () => {
         const response = await fetch(
-            `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=8&page=1&x_cg_demo_api_key=${API_KEY}`);
+            `${rootURL}coins/markets?vs_currency=usd&order=market_cap_desc&per_page=8&page=1&x_cg_demo_api_key=${apiKey}`);
         return await response.json();
     }
 
     const loadNFTsData = async () => {
-        const response = await fetch(`https://api.coingecko.com/api/v3/nfts/list?per_page=8&page=1&x_cg_demo_api_key=${API_KEY}`);
+        const response = await fetch(`${rootURL}nfts/list?per_page=8&page=1&x_cg_demo_api_key=${apiKey}`);
         return await response.json();
     }
     
     useEffect(() => {
-        loadCOinData().then(setCoindata);
+        loadCoinData().then(setCoindata);
         loadNFTsData().then(setNftdata);
     }, []);
     
