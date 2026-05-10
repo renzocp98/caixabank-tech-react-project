@@ -9,6 +9,7 @@ import Exchanges from '#components/Exchanges.jsx'
 import Derivatives from '#components/Derivatives.jsx'
 import Layout from '#Layout.jsx'
 import { createContext } from 'react'
+import CoinsDetails from '#components/CoinsDetails.jsx'
 
 export const AppContext = createContext(null);
 
@@ -22,7 +23,11 @@ createRoot(document.getElementById('root')).render(
         <Routes>
           <Route element={<Layout/>}>
             <Route index element={<HomePage/>}/>
-            <Route path='coins' element={<Coins/>}/>
+            <Route path='coins'>
+              <Route index element={<Coins/>}/>
+              <Route path=':id' element={<CoinsDetails/>}/>
+            </Route>
+
             <Route path='nfts' element={<NFTs/>}/>
             <Route path='exchanges' element={<Exchanges/>}/>
             <Route path='derivatives' element={<Derivatives/>}/>

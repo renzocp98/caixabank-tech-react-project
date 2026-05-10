@@ -33,9 +33,10 @@ export default function Coins(){
 
   return(
     <>
+    <h1 className="text-center text-2xl font-bold py-6 text-green-400">Cryptocurrency Market</h1>
     <CoinCarousel coins={coins}>
     </CoinCarousel >
-    <div className="flex">
+    <div className="flex justify-center   py-6">
       <button className="p-4 hover:text-blue-300" disabled={page === 1} onClick={() => setPage(p => p - 1)}>
         Anterior
       </button>
