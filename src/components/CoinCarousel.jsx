@@ -36,7 +36,7 @@ export default function CoinCarousel({ coins }) {
                   <CardContent className="text-1xl font-bold text-white">
                     {coin.current_price} $
                   </CardContent>
-                  <CardFooter className="flex justify-between border-cg-green/20" >
+                  <CardFooter className="flex justify-between border-cg-green/20">
                     <div >
                       <span className="p-1 text-white">High: {coin.high_24h}</span>
                       <span className="p-1 text-white">Low: {coin.low_24h}</span>
