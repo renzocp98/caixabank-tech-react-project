@@ -10,6 +10,7 @@ import Derivatives from '#components/Derivatives.jsx'
 import Layout from '#Layout.jsx'
 import { createContext } from 'react'
 import CoinsDetails from '#components/CoinsDetails.jsx'
+import NFTsDetails from '#components/NFTsDetails.jsx'
 
 export const AppContext = createContext(null);
 
@@ -28,7 +29,10 @@ createRoot(document.getElementById('root')).render(
               <Route path=':id' element={<CoinsDetails/>}/>
             </Route>
 
-            <Route path='nfts' element={<NFTs/>}/>
+            <Route path='nfts' >
+              <Route index element={<NFTs/>}/>
+              <Route path=':id' element={<NFTsDetails/>}/>
+            </Route>
             <Route path='exchanges' element={<Exchanges/>}/>
             <Route path='derivatives' element={<Derivatives/>}/>
           </Route>
