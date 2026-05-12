@@ -5,12 +5,12 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import HomePage from '#HomePage.jsx'
 import Coins from '#components/Coin.jsx'
 import NFTs from '#components/NFTs.jsx'
-import Exchanges from '#components/Exchanges.jsx'
 import Derivatives from '#components/Derivatives.jsx'
 import Layout from '#Layout.jsx'
 import { createContext } from 'react'
 import CoinsDetails from '#components/CoinsDetails.jsx'
 import NFTsDetails from '#components/NFTsDetails.jsx'
+import DerivativesDetails from '#components/DerivativesDetails.jsx'
 
 export const AppContext = createContext(null);
 
@@ -28,13 +28,14 @@ createRoot(document.getElementById('root')).render(
               <Route index element={<Coins/>}/>
               <Route path=':id' element={<CoinsDetails/>}/>
             </Route>
-
             <Route path='nfts' >
               <Route index element={<NFTs/>}/>
               <Route path=':id' element={<NFTsDetails/>}/>
             </Route>
-            <Route path='exchanges' element={<Exchanges/>}/>
-            <Route path='derivatives' element={<Derivatives/>}/>
+            <Route path='derivatives'>
+              <Route index element={<Derivatives/>}/>
+              <Route path=':id' element={<DerivativesDetails/>}/>
+            </Route>
           </Route>
         </Routes>
       </BrowserRouter>

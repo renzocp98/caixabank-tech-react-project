@@ -20,7 +20,7 @@ export default function Coins(){
     setLoading(true) 
     loadCoinCardData().then(data => {
         setCoins(data)
-        setLoading(false)  // dentro del .then(), cuando ya hay datos
+        setLoading(false)
     })
 }, [page])
 

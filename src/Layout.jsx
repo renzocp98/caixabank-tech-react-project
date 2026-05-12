@@ -7,7 +7,6 @@ export default function Layout(){
                 <Link to="/" className="hover:text-blue-400 transition-colors p-4" >Home Page</Link>
                 <Link to="/coins" className="hover:text-blue-400 transition-colors p-4">Coins</Link>
                 <Link to="/nfts" className="hover:text-blue-400 transition-colors p-4">NFTs</Link>
-                <Link to="/exchanges" className="hover:text-blue-400 transition-colors p-4">Exchanges</Link>
                 <Link to="/derivatives" className="hover:text-blue-400 transition-colors p-4">Derivatives</Link>
             </nav>
             <Outlet/>
