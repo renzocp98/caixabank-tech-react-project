@@ -48,10 +48,10 @@ export default function DerivativesDetails() {
           </div>
         ))}
       </div>
-        <div className="bg-cg-card-green rounded-xl p-4">
-          <h3 className="text-cg-green text-sm mb-2">Sobre {exchange.name}</h3>
-          <p className="text-gray-300 text-sm">{exchange.description}</p>
-        </div>
+      <div className="text-gray-300">
+        <h3 className="text-white text-lg mb-2">Sobre {exchange.name}</h3>
+        <p>{exchange.description}</p>
+      </div>
       
     </div>
   );
