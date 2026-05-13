@@ -1,15 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import HomePage from '#HomePage.jsx'
-import Coins from '#components/Coin.jsx'
-import NFTs from '#components/NFTs.jsx'
-import Derivatives from '#components/Derivatives.jsx'
-import Layout from '#Layout.jsx'
-import CoinsDetails from '#components/CoinsDetails.jsx'
-import NFTsDetails from '#components/NFTsDetails.jsx'
-import DerivativesDetails from '#components/DerivativesDetails.jsx'
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import './index.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import HomePage from '#HomePage.jsx';
+import Coins from '#components/Coin.jsx';
+import NFTs from '#components/NFTs.jsx';
+import Derivatives from '#components/Derivatives.jsx';
+import Layout from '#Layout.jsx';
+import CoinsDetails from '#components/CoinsDetails.jsx';
+import NFTsDetails from '#components/NFTsDetails.jsx';
+import DerivativesDetails from '#components/DerivativesDetails.jsx';
+import SearchResults from '#components/SearchResults.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -29,6 +30,7 @@ createRoot(document.getElementById('root')).render(
             <Route index element={<Derivatives/>}/>
             <Route path=':id' element={<DerivativesDetails/>}/>
           </Route>
+          <Route path='search' element={<SearchResults/>}/>
         </Route>
       </Routes>
     </BrowserRouter>
