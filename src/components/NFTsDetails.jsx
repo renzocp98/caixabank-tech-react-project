@@ -1,8 +1,8 @@
-import { useEffect } from "react"
-import { useStore } from "@nanostores/react"
-import { useParams } from "react-router-dom"
-import { $nftId, $nftDetail, $nftDetailLoading } from "../stores/nftsStore"
-import PriceChange from "./PriceChange"
+import { useEffect } from "react";
+import { useStore } from "@nanostores/react";
+import { useParams } from "react-router-dom";
+import { $nftId, $nftDetail, $nftDetailLoading } from "../stores/nftsStore";
+import PriceChange from "./PriceChange";
 
 export default function NFTsDetails() {
   const { id } = useParams();

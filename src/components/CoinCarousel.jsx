@@ -4,7 +4,7 @@ import {
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-} from "@/components/ui/carousel"
+} from "@/components/ui/carousel";
 import {
   Card,
   CardAction,
@@ -12,10 +12,10 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import Autoplay from "embla-carousel-autoplay"
-import { Link } from "react-router-dom"
-import PriceChange from "./PriceChange"
+} from "@/components/ui/card";
+import Autoplay from "embla-carousel-autoplay";
+import { Link } from "react-router-dom";
+import PriceChange from "./PriceChange";
 
 
 export default function CoinCarousel({ coins }) {

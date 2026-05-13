@@ -2,7 +2,7 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-} from "@/components/ui/carousel"
+} from "@/components/ui/carousel";
 import {
   Card,
   CardContent,
@@ -10,10 +10,10 @@ import {
   CardTitle,
   CardAction,
   CardFooter,
-} from "@/components/ui/card"
-import Autoplay from "embla-carousel-autoplay"
-import { Link } from "react-router-dom"
-import PriceChange from "./PriceChange"
+} from "@/components/ui/card";
+import Autoplay from "embla-carousel-autoplay";
+import { Link } from "react-router-dom";
+import PriceChange from "./PriceChange";
 
 export default function NFTsCarousel({ nfts }) {
   return (

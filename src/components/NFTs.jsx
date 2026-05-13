@@ -1,6 +1,6 @@
-import { useStore } from "@nanostores/react"
-import { $nftsData, $nftsLoading, $nftsPage } from "../stores/nftsStore"
-import NFTsCarousel from "./NTFsCarousel"
+import { useStore } from "@nanostores/react";
+import { $nftsData, $nftsLoading, $nftsPage } from "../stores/nftsStore";
+import NFTsCarousel from "./NTFsCarousel";
 
 export default function NFTs() {
   const nfts = useStore($nftsData);

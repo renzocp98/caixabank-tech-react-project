@@ -1,26 +1,15 @@
-import { AppContext } from "#main.jsx";
-import { useContext, useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useStore } from "@nanostores/react";
 import { useParams } from "react-router-dom";
+import { $derivativeId, $derivativeDetail, $derivativeDetailLoading } from "../stores/derivativesStore";
 
 export default function DerivativesDetails() {
-  const { apiKey, rootURL } = useContext(AppContext);
   const { id } = useParams();
-  const [exchange, setExchange] = useState(null);
-  const [loading, setLoading] = useState(true);
-
-  const loadExchangeDetails = async () => {
-    const response = await fetch(
-      `${rootURL}derivatives/exchanges/${id}?include_tickers=unexpired&x_cg_demo_api_key=${apiKey}`
-    );
-    return await response.json();
-  }
+  const exchange = useStore($derivativeDetail);
+  const loading = useStore($derivativeDetailLoading);
 
   useEffect(() => {
-    setLoading(true);
-    loadExchangeDetails().then(data => {
-      setExchange(data);
-      setLoading(false);
-    });
+    $derivativeId.set(id);
   }, [id]);
 
   if (loading) return <div>Loading Data....</div>;
@@ -32,8 +21,11 @@ export default function DerivativesDetails() {
         <div>
           <h1 className="text-2xl text-white">{exchange.name}</h1>
           <span className="text-gray-400 text-sm">{exchange.country}</span>
-            <span className="text-gray-400 text-sm ml-2">· Est. {exchange.year_established}</span>
+          <span className="text-gray-400 text-sm ml-2">· Est. {exchange.year_established}</span>
         </div>
+          <a href={exchange.url} target="_blank" className="ml-auto text-cg-green hover:underline text-sm">
+            🌐 Website
+          </a>
       </div>
       <div className="grid grid-cols-2 gap-4">
         {[
@@ -48,11 +40,26 @@ export default function DerivativesDetails() {
           </div>
         ))}
       </div>
+
       <div className="text-gray-300">
         <h3 className="text-white text-lg mb-2">Sobre {exchange.name}</h3>
         <p>{exchange.description}</p>
       </div>
-      
+        <div className="bg-cg-card-green rounded-xl p-4">
+          <h3 className="text-cg-green text-sm mb-3">Contratos activos</h3>
+          <div className="flex flex-col gap-2 max-h-72 overflow-y-auto">
+            {exchange.tickers.slice(0, 20).map((ticker, i) => (
+              <div key={i} className="flex justify-between text-sm border-b border-cg-green/10 pb-1">
+                <span className="text-white">{ticker.symbol}</span>
+                <span className="text-gray-400">{ticker.contract_type}</span>
+                <span className="text-white">${Number(ticker.last).toLocaleString()}</span>
+                <span className={Number(ticker.funding_rate) >= 0 ? "text-green-400" : "text-red-400"}>
+                  {ticker.funding_rate != null ? `${(Number(ticker.funding_rate) * 100).toFixed(4)}%` : '—'}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
     </div>
-  );
+  )
 }

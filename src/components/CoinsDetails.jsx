@@ -1,19 +1,19 @@
-import { useEffect } from "react"
-import { useStore } from "@nanostores/react"
-import { useParams } from "react-router-dom"
-import { $coinId, $coinDetail, $coinDetailLoading } from "../stores/coinsStore"
-import PriceChange from "./PriceChange"
+import { useEffect } from "react";
+import { useStore } from "@nanostores/react";
+import { useParams } from "react-router-dom";
+import { $coinId, $coinDetail, $coinDetailLoading } from "../stores/coinsStore";
+import PriceChange from "./PriceChange";
 
 export default function CoinsDetails() {
-  const { id } = useParams()
-  const coinDetail = useStore($coinDetail)
-  const loading = useStore($coinDetailLoading)
+  const { id } = useParams();
+  const coinDetail = useStore($coinDetail);
+  const loading = useStore($coinDetailLoading);
 
   useEffect(() => {
-    $coinId.set(id)
-  }, [id])
+    $coinId.set(id);
+  }, [id]);
 
-  if (loading) return <div>Loading Data....</div>
+  if (loading) return <div>Loading Data....</div>;
 
   return (
     <div className="p-6 flex flex-col gap-6">

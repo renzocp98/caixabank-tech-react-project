@@ -1,6 +1,6 @@
-import { useStore } from "@nanostores/react"
-import { $coinsData, $coinsLoading, $coinsPage } from "../stores/coinsStore"
-import CoinCarousel from "./CoinCarousel"
+import { useStore } from "@nanostores/react";
+import { $coinsData, $coinsLoading, $coinsPage } from "../stores/coinsStore";
+import CoinCarousel from "./CoinCarousel";
 
 export default function Coins() {
   const coins = useStore($coinsData)
