@@ -14,7 +14,7 @@ import SearchResults from '#components/SearchResults.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/caixabank-tech-react-project/">
       <Routes>
         <Route element={<Layout/>}>
           <Route index element={<HomePage/>}/>
