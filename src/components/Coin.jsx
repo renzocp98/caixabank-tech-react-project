@@ -1,54 +1,29 @@
-import { AppContext } from "#main.jsx";
-import { useContext, useEffect, useState } from "react";
-import CoinCarousel from "./CoinCarousel";
+import { useStore } from "@nanostores/react"
+import { $coinsData, $coinsLoading, $coinsPage } from "../stores/coinsStore"
+import CoinCarousel from "./CoinCarousel"
 
-export default function Coins(){
+export default function Coins() {
+  const coins = useStore($coinsData)
+  const loading = useStore($coinsLoading)
+  const page = useStore($coinsPage)
 
-  const { apiKey, rootURL } = useContext(AppContext);
-  const [coins, setCoins] = useState([]);
-  const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
-  
-  const loadCoinCardData = async () => {
-    const response = await fetch(
-      `${rootURL}coins/markets?vs_currency=usd&per_page=15&page=${page}&x_cg_demo_api_key=${apiKey}`
-    );
-    return await response.json();  
-  }
+  if (loading) return <div>Loading Data....</div>;
 
-  useEffect(() => {
-    setLoading(true) 
-    loadCoinCardData().then(data => {
-        setCoins(data)
-        setLoading(false)
-    })
-}, [page])
-
-  if(loading === true){
-   return <div>
-            Loading Data....
-          </div>  
-
-  }
-
-  return(
-    <div className="flex flex-col items-center justify-center  min-h-screen w-full">
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen w-full">
       <h1 className="text-center text-2xl font-bold py-6 text-green-400">Cryptocurrency Market</h1>
       <div className="w-full">
-        <CoinCarousel coins={coins}/>
+        <CoinCarousel coins={coins} />
       </div>
-      <div className="flex justify-center   py-6">
-        <button className="p-4 hover:text-blue-300" disabled={page === 1} onClick={() => setPage(p => p - 1)}>
+      <div className="flex justify-center py-6">
+        <button className="p-4 hover:text-blue-300" disabled={page === 1} onClick={() => $coinsPage.set(page - 1)}>
           Anterior
         </button>
-        <h2 className="p-4">
-          {page}
-        </h2>
-        <button className="p-4 hover:text-blue-300" onClick={() => setPage(p => p + 1)}>
+        <h2 className="p-4">{page}</h2>
+        <button className="p-4 hover:text-blue-300" onClick={() => $coinsPage.set(page + 1)}>
           Siguiente
         </button>
       </div>
     </div>
-
   )
 }
